@@ -5,7 +5,7 @@ public class SalesManager extends Employee {
     private double salesValue;
     private double percent;
 
-    public SalesManager(int id, String firstName, String lastName, double hours, double salesValue, double percent, int i) {
+    public SalesManager(int id, String firstName, String lastName, double hours, double salesValue, double percent) {
         super(id, firstName, lastName, hours);
         this.salesValue = salesValue;
         this.percent = percent;

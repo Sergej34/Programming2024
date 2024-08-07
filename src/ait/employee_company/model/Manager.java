@@ -6,13 +6,14 @@ package ait.employee_company.model;
 //    - Worker: grade*hours
 
 public class Manager extends Employee {
+
     private double baseSalary;
     private int grade;
 
-    public Manager(int id, String firstName, String lastName, int i, double hours, double baseSalary, int grade) {
+    public Manager(int id, String firstName, String lastName, double hours, double baseSalary, int grade) {
         super(id, firstName, lastName, hours);
         this.baseSalary = baseSalary;
-        this.grade = grade; // разряд, тарифная сетка
+        this.grade = grade;
     }
 
     public double getBaseSalary() {
