@@ -1,4 +1,7 @@
+package ait.employee_company.dao;
 
+
+import ait.employee_company.model.Employee;
 
 public interface Company {
 

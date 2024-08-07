@@ -1,6 +1,10 @@
 package ait.employee_company.dao;
 
-public class CompanyImpl implements classwork_25.src.ait.employee_company.dao.Company {
+
+import ait.employee_company.model.Employee;
+import ait.employee_company.model.SalesManager;
+
+public class CompanyImpl implements Company{
 
     private Employee[] employees; // array for objects
     private int size; // current size of array

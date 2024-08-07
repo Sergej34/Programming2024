@@ -2,7 +2,6 @@ package ait.employee_company.model;
 
 import java.util.Objects;
 
-
 public abstract class Employee {
 
     protected static double minWage = 13; // 13 euro/hour

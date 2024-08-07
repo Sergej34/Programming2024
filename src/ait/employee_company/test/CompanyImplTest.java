@@ -19,10 +19,10 @@ class CompanyImplTest {
     void setUp() {
         company = new CompanyImpl(5);
         firma = new Employee[5];
-        firma[0] = new Manager(1000, "Bill", "Smith", 160, 35, 5000, 5);
-        firma[1] = new Worker(2000, "Anne", "Müller", 170, 28, 15);
-        firma[2] = new SalesManager(3000, "Peter", "Jackson", 160, 50, 19000, 0.1);
-        firma[3] = new SalesManager(4000, "Robin", "Good", 180, 45, 20000, 0.1);
+        firma[0] = new Manager(1000, "Bill", "Smith", 160, 35, 5000);
+        firma[1] = new Worker(2000, "Anne", "Müller", 170, 28);
+        firma[2] = new SalesManager(3000, "Peter", "Jackson", 160, 50, 19000);
+        firma[3] = new SalesManager(4000, "Robin", "Good", 180, 45, 20000);
 
         for (int i = 0; i < firma.length; i++) {
             company.addEmployee(firma[i]);
@@ -33,10 +33,10 @@ class CompanyImplTest {
     void addEmployee() {
         assertFalse(company.addEmployee(null));
         assertFalse(company.addEmployee(firma[0]));
-        Employee employee = new SalesManager(5000, "Michael", "Schuhmacher", 160, 30, 20000, 0.1);
+        Employee employee = new SalesManager(5000, "Michael", "Schuhmacher", 160, 30000, 0.1);
         assertTrue(company.addEmployee(employee));
         assertEquals(5, company.quantity());
-        employee = new SalesManager(6000, "Nick", "Lohman", 160, 34, 20000, 0.1);
+        employee = new SalesManager(6000, "Nick", "Lohman", 160, 25000, 0.1);
         assertFalse(company.addEmployee(employee));
     }
 
@@ -48,18 +48,18 @@ class CompanyImplTest {
 
     @Test
     void updateEmployee() {
-        Employee worker = new Worker(2000, "Anne", "Müller", 160, 28, 20);
+        Employee worker = new Worker(2000, "Anne", "Müller", 160, 28);
         assertEquals(firma[1], company.updateEmployee(worker));
-        worker = new Worker(6000, "Anne", "Müller", 160, 28, 20);
+        worker = new Worker(6000, "Anne", "Müller", 160, 28);
         assertNull(company.updateEmployee(worker));
     }
 
     @Test
     void removeEmployee() {
-        Employee employeeVictim = company.removeEmployee(3000);
+        Employee employeeVictim = company.revoveEmployee(3000);
         assertEquals(firma[2], employeeVictim);
         assertEquals(3, company.quantity());
-        assertNull(company.removeEmployee(3000));
+        assertNull(company.revoveEmployee(3000));
     }
 
     @Test
@@ -74,13 +74,13 @@ class CompanyImplTest {
 
     @Test
     void totalSalary() {
-        assertEquals(12770.0, company.totalSalary());
+        assertEquals(2654795.0, company.totalSalary());
 
     }
 
     @Test
     void totalSales() {
-        assertEquals(39000, company.totalSales());
+        assertEquals(95, company.totalSales());
     }
 
     @Test
