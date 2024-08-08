@@ -52,6 +52,7 @@ class CompanyImplTest {
         assertEquals(firma[1], company.updateEmployee(worker));
         worker = new Worker(6000, "Anne", "Müller", 160, 28);
         assertNull(company.updateEmployee(worker));
+        System.out.println(worker);
     }
 
     @Test
