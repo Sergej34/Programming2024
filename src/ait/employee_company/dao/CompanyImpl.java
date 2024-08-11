@@ -41,15 +41,15 @@ public class CompanyImpl implements Company{
         return null;
     }
 
-    @Override
+    @Override                      // содержит id name hours и тд. с конструктора
     public Employee updateEmployee(Employee employee) {
-        for (int i = 0; i < size; i++) {
-            if (employees[i].getId() == employee.getId()) {
-                employees[i] = employee;
-                return employee;
+        for (int i = 0; i < size; i++) {// добегаем до size так как заполнен до size
+            if (employees[i].getId() == employee.getId()) {//если мы найдём нашего employee мы бежим по этому массиву по поиску если совпали
+                employees[i] = employee;// В массиве имевшего заменяем на того кого прислали который в id совпали
+                return employee;// сделаем замену и вернём этого employee
             }
         }
-        return null;
+        return null;// если не что не нашлось return null
     }
 
     @Override
