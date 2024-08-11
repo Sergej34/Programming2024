@@ -30,14 +30,14 @@ class LibraryImplTest {
 
     @BeforeEach
     void setUp() {
-        library = new LibraryImpl(5);
+        library = new LibraryImpl(7);
         books = new Book[6];
-        books[0] = new Book("Clear code", "Robert Martin",2006, 1_111_111_111_111L);
-        books[1] = new Book("Title 1", "Author 1",2006, 1_111_111_111_112L);
-        books[2] = new Book("Title 2", "Author 1",2006, 1_111_111_111_113L);
-        books[3] = new Book("Title 3", "Author 2", 2006, 1_111_111_111_114L);
-        books[4] = new Book("Title 4", "Author 2", 2006, 1_111_111_111_115L);
-        books[5] = new Book("Title 5", "Author 3", 2007,1_111_111_111_116L);
+        books[0] = new Book("Clear code", "Robert Martin", 2006, 1_111_111_111_111L);
+        books[1] = new Book("Title 1", "Author 1", 2006, 1_111_111_111_112L);
+        books[2] = new Book("Title 2", "Author 1", 2006, 1_111_111_111_113L);
+        books[3] = new Book("Title 3", "Author 2", 1952, 1_111_111_111_114L);
+        books[4] = new Book("Title 4", "Author 2", 1998, 1_111_111_111_115L);
+        books[5] = new Book("Title 5", "Author 3", 2007, 1_111_111_111_116L);
 
         for (int i = 0; i < books.length; i++) {
             library.addBook(books[i]);
@@ -50,7 +50,7 @@ class LibraryImplTest {
     void addBook() {
         assertFalse(library.addBook(null));
         assertFalse(library.addBook(books[0]));
-        Book book = new Book("Война и мир","Лев Толстой",1952, 1_111_111_111_117L);
+        Book book = new Book("Война и мир", "Лев Толстой", 1952, 1_111_111_111_117L);
         assertTrue(library.addBook(book));
         assertEquals(7, library.quantityBook());
         book = new Book("Люди на болоте", "Иван Мележ", 1990, 1_111_111_111_118L);
@@ -60,15 +60,15 @@ class LibraryImplTest {
     @Test
     void removeBook() {
         Book bookVictim = library.removeBook(1_111_111_111_111L);
-        assertEquals(books[0],bookVictim);
-        assertEquals(4, library.quantityBook());
+        assertEquals(books[0], bookVictim);
+        assertEquals(5, library.quantityBook());
         assertNull(library.removeBook(1_111_111_111_111L));
 
     }
 
     @Test
     void findBook() {
-        assertEquals(books[2],library.findBook(1_111_111_111_113L));
+        assertEquals(books[2], library.findBook(1_111_111_111_113L));
         assertNull(library.findBook(1_111_111_111_117L));
 
     }
@@ -80,15 +80,32 @@ class LibraryImplTest {
 
     @Test
     void quantityBook() {
-        assertEquals(5, library.quantityBook());
+        assertEquals(6, library.quantityBook());
     }
 
     @Test
-    void updateBook(){
-        Book book = new Book("Title 1", "Author 1",2006, 1_111_111_111_112L);
+    void updateBook() {
+        Book book = new Book("Title 1", "Author 10", 2006, 1_111_111_111_112L);
         assertEquals(books[1], library.updateBook(book));
-        book = new Book("Title 6", "Author 6", 2018, 1_111_111_111_116L);
+        book = new Book("Title 6", "Author 6", 2018, 1_111_111_111_120L);
         assertNull(library.updateBook(book));
-        System.out.println(book);
     }
+
+    //Book - Library, найти несколько книг по автору
+    @Test
+    void findBookByAuthor() {
+        Book[] expected = {books[1], books[2]};
+        Book[] actual = library.findBookByAuthor("Author 1");
+        assertArrayEquals(expected, actual);
+    }
+    // Найти книги с годом издания от и до
+
+    @Test
+    void findBookByYear() {
+        Book[] expected = {books[3], books[4]};
+        Book[] actual = library.findBookByYear(1940, 2000);
+        assertArrayEquals(expected, actual);
+
+    }
+
 }

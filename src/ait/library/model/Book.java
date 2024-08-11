@@ -5,7 +5,7 @@ import java.util.Objects;
 // Создать класс Book с полями:
 // long isbn, String title, String author, int yearOfPublishing.
 // Проверить ISBN на корректное количество цифр = 13.
-public class Book implements Comparable<Book> {
+public class Book {
 
     public static final int ISBN_LENGTH = 13; // Константа - // final - изменить это значение нельзя
 
@@ -92,9 +92,4 @@ public class Book implements Comparable<Book> {
         return Objects.hashCode(isbn);
     }
 
-
-    @Override
-    public int compareTo(Book o) {
-        return 0;
-    }
 }

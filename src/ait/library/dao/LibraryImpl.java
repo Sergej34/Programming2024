@@ -3,6 +3,8 @@ package ait.library.dao;
 
 import ait.library.model.Book;
 
+import java.util.function.Predicate;
+
 public class LibraryImpl implements Library {
 
     private Book[] books;       // array for objects
@@ -79,6 +81,32 @@ public class LibraryImpl implements Library {
         }
         return null;
 
+    }
+
+    @Override
+    public Book[] findBookByAuthor(String author) {
+        return findBookByPredicate(book -> author.equals(book.getAuthor()));
+    }
+
+    @Override
+    public Book[] findBookByYear(double min, double max) {
+        return findBookByPredicate(book -> book.getYearOfPublishing() > min && book.getYearOfPublishing() < max);
+    }
+
+    private Book[] findBookByPredicate(Predicate<Book> predicate) {
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (predicate.test(books[i])) {
+                count++;
+            }
+        }
+        Book[] res = new Book[count];
+        for (int i = 0, j = 0; j < res.length; i++) {
+            if (predicate.test(books[i])) {
+                res[j++] = books[i];
+            }
+        }
+        return res;
     }
 
 }

@@ -25,4 +25,8 @@ public interface Library {
     //обновить данные о книге
     Book updateBook(Book book);
 
+    Book[] findBookByAuthor(String author);
+
+    Book[] findBookByYear(double min, double max);
+
 }
