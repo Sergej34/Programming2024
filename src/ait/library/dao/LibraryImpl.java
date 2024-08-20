@@ -48,7 +48,7 @@ public class LibraryImpl implements Library {
     }
 
     @Override
-    public Book findBook(long isbn) {//public Book findBook(long isbn) {  // Book это мы обозначаем тип объекта которого мы вернём / find book это название метода
+    public Book findBook(long isbn) {//public Book findBook(long isbn) {  // Book это мы обозначаем тип объекта которого мы вернём
         for (int i = 0; i < size; i++) {
             if (books[i].getIsbn() == isbn) { // getIsbn нужно взять isbn что он равен тому isbn который пришёл на вход
                 return books[i];
