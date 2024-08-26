@@ -1,6 +1,10 @@
 package ait.minimarket.dao;
 
+import ait.minimarket.model.Food;
 import ait.minimarket.model.Product;
+
+import java.time.LocalDate;
+import java.util.function.Predicate;
 
 public class SupermarketImpl implements Supermarket {
 
@@ -9,9 +13,9 @@ public class SupermarketImpl implements Supermarket {
     private int quantity;
 
 
-    public SupermarketImpl(Product[] products, int branch, int capacity) {
+    public SupermarketImpl(int capacity) {
         products = new Product[capacity];
-        this.branch = branch;
+        //this.branch = branch;
 
     }
 
@@ -74,6 +78,50 @@ public class SupermarketImpl implements Supermarket {
     @Override
     public int quantity() {
         return quantity;
+    }
+
+    @Override
+    public Product[] findProductByExpirationDate(LocalDate date) {
+        return findProductByPredicate(product -> ((Food) product).getExpDate().equals(date));
+    }
+
+    @Override
+    public double totalCost() {
+        double res = 0;
+        for (int i = 0; i < quantity; i++) {
+            res += products[i].getPrice();
+        }
+        return res;
+    }
+
+    @Override
+    public double averageCost() {
+        return totalCost() / quantity;
+    }
+
+    @Override
+    public Product[] findOutOfDate(LocalDate date) {
+        return findProductByPredicate(product -> ((Food) product).getExpDate().isBefore(date));
+    }
+
+    private Product[] findProductByPredicate(Predicate<Product> predicate) {
+        int count = 0;
+        for (int i = 0; i < quantity; i++) {
+            if (products[i] instanceof Food food) {
+                if (predicate.test(food)) {
+                    count++;
+                }
+            }
+        }
+        Product[] res = new Product[count];
+        for (int i = 0, j = 0; j < res.length; i++) {
+            if (products[i] instanceof Food food) {
+                if (predicate.test(products[i])) {
+                    res[j++] = products[i];
+                }
+            }
+        }
+        return res;
     }
 }
 

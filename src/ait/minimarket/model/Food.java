@@ -1,23 +1,34 @@
 package ait.minimarket.model;
 
-public class Food extends Product {
+import java.time.LocalDate;
+import java.util.Objects;
 
+public class Food extends Product {
+    private LocalDate expDate;
     private final int energy;
 
-    public Food(String barcode, String name, double price, int energy) {
+    public Food(String barcode, String name, double price, LocalDate expDate, int energy) {
         super(barcode, name, price);
+        this.expDate = expDate;
         this.energy = energy;
     }
 
-    public int getEnergy() {
-        return energy;
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Food food)) return false;
+        if (!super.equals(object)) return false;
+        return Objects.equals(expDate, food.expDate);
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "Food{" +
-                "energy=" + energy +
-                '}';
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), expDate);
+    }
+    @Override
+    public String toString(){
+        return super.toString() + ", expDate: " + expDate;
     }
 }
 //Марафон: Объекты - Интерфейсы - Тесты - Имплементация

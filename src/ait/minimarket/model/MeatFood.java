@@ -1,16 +1,17 @@
 package ait.minimarket.model;
 
-public class MeatFood extends Product{
+import java.time.LocalDate;
+import java.util.Objects;
+
+public class MeatFood extends Product {
 
     private String meatType; // Тип мяса (говядина, свинина, курица и т.д.)
     private String origin;   // Страна происхождения
-    private boolean isOrganic; // Органический продукт или нет
 
-    public MeatFood(String barcode, String name, double price, String meatType, String origin, boolean isOrganic) {
+    public MeatFood(String barcode, String name, double price, String meatType, String origin) {
         super(barcode, name, price);
         this.meatType = meatType;
         this.origin = origin;
-        this.isOrganic = isOrganic;
     }
 
     public String getMeatType() {
@@ -29,13 +30,26 @@ public class MeatFood extends Product{
         this.origin = origin;
     }
 
-    public boolean isOrganic() {
-        return isOrganic;
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof MeatFood meatFood)) return false;
+        if (!super.equals(object)) return false;
+        return Objects.equals(meatType, meatFood.meatType) && Objects.equals(origin, meatFood.origin);
     }
 
-    public void setOrganic(boolean organic) {
-        isOrganic = organic;
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), meatType, origin);
     }
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("MeatFood{");
+        sb.append("meatType='").append(meatType).append('\'');
+        sb.append(", origin='").append(origin).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

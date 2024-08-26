@@ -7,6 +7,8 @@ package ait.minimarket.model;
 // (срок задается строкой вида yyyy-MM-dd), общая стоимость всех товаров, средняя стоимость, ...
 //Pets (Cat, Dog) - Hotel, выручка от отеля, найти всех животных по породе, ...
 //Student, Aspirant, Professor - High school - средний балл, выбрать студентов со средним баллом от и до, ..
+
+import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Product {
@@ -32,6 +34,10 @@ public abstract class Product {
 
     public String getBarcode() {
         return barcode;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double getPrice() {

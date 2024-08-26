@@ -16,21 +16,36 @@ package ait.minimarket.dao;
 
 import ait.minimarket.model.Product;
 
+import java.time.LocalDate;
+
 public interface Supermarket {
 
 //only abstract methods for Employee and children
     //===================================
 
-/*
-    C - create
-    R - read
-    U - update
-    D - delete
-*/
+    /*
+        C - create
+        R - read
+        U - update
+        D - delete
+    */
     boolean addProduct(Product product); // boolean - отвечает за то, что удалось добавить или нет
+
     Product findProduct(String barcode);
+
     Product updateProduct(Product product);
+
     Product removeProduct(String barcode);
+
     void printProduct();
+
     int quantity();
+
+    Product[] findProductByExpirationDate(LocalDate date);
+
+    double totalCost();
+
+    double averageCost();
+
+    Product[] findOutOfDate(LocalDate date);
 }
