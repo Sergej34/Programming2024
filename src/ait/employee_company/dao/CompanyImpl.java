@@ -1,4 +1,4 @@
-package ait.employee_company.dao;
+/*package ait.employee_company.dao;
 
 
 import ait.employee_company.model.Employee;
@@ -115,4 +115,4 @@ public class CompanyImpl implements Company{
         }
         return res;
     }
-}
+}*/

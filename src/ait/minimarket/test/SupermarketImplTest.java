@@ -1,4 +1,4 @@
-package ait.minimarket.test;
+/*package ait.minimarket.test;
 
 import ait.minimarket.dao.Supermarket;
 import ait.minimarket.dao.SupermarketImpl;
@@ -95,4 +95,4 @@ class SupermarketImplTest {
     }
 
 
-}
+}*/

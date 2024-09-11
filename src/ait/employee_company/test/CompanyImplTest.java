@@ -1,11 +1,11 @@
-package ait.employee_company.test;
+/*package ait.employee_company.test;
 
 import ait.employee_company.dao.Company;
-import ait.employee_company.dao.CompanyImpl;
 import ait.employee_company.model.Employee;
 import ait.employee_company.model.Manager;
 import ait.employee_company.model.SalesManager;
 import ait.employee_company.model.Worker;
+import classwork_29.company_copy_v2.ait.employee.dao.CompanyImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -92,4 +92,4 @@ class CompanyImplTest {
         assertArrayEquals(expected, actual);
     }
 
-}
+}*/

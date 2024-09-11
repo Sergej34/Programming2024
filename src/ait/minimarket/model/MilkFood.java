@@ -1,4 +1,4 @@
-package ait.minimarket.model;
+/*package ait.minimarket.model;
 
 import java.time.LocalDate;
 
@@ -39,4 +39,4 @@ public class MilkFood extends Product {
     public void setVolume(double volume) {
         this.volume = volume;
     }
-}
+}*/

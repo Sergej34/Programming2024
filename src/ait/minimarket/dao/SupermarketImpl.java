@@ -1,4 +1,4 @@
-package ait.minimarket.dao;
+/*package ait.minimarket.dao;
 
 import ait.minimarket.model.Food;
 import ait.minimarket.model.Product;
@@ -123,6 +123,6 @@ public class SupermarketImpl implements Supermarket {
         }
         return res;
     }
-}
+}*/
 
 
