@@ -1,6 +1,7 @@
 package Homework_39.citizens.dao;
 
-import homework_39.citizens.model.Person;
+
+import Homework_39.citizens.model.Person;
 
 import java.util.Comparator;
 import java.util.List;
@@ -57,6 +58,6 @@ public class CitizensImpl implements Citizens {
 
     @Override
     public int size() {
-        return 0;
+        return size();
     }
 }
