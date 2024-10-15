@@ -1,16 +1,17 @@
 package Homework_39.citizens.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 //В проекте Citizens, создать имплементацию интерфейса с названием CitizensSetImpl
 //основанную на сетах. Над методами, в комментариях, указать их вычислительную сложность.
 public class Person implements Comparable<Person> {
 
-    int id;
-    String firstName;
-    String lastName;
-    LocalDate birthDate;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthDate;
 
     public Person(int id, String firstName, String lastName, LocalDate birthDate) {
         this.id = id;
@@ -44,7 +45,8 @@ public class Person implements Comparable<Person> {
     }
 
     public int getAge(int age) {
-        return age;
+        LocalDate now = LocalDate.now();
+        return (int) ChronoUnit.YEARS.between(birthDate, now);
     }
 
     @Override
